@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Martin Wiegand - Parking Technology Leader</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0f1b2d;
+    --accent: #3b82f6;
+    --accent-light: #60a5fa;
+    --gold: #f59e0b;
+    --surface: #0d1520;
+    --card: rgba(26, 39, 68, 0.6);
+    --text: #e2e8f0;
+    --text-dim: #94a3b8;
+    --text-bright: #f8fafc;
+    --border: rgba(59, 130, 246, 0.15);
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; -webkit-box-sizing: border-box; box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--surface);
+    color: var(--text);
+    line-height: 1.65;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: 
+      radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.04) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(245, 158, 11, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container { max-width: 900px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+
+  /* ===== HERO ===== */
+  .hero {
+    padding: 80px 0 60px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent-light);
+    margin-bottom: 16px;
+    opacity: 0;
+    -webkit-animation: fadeUp 0.6s ease forwards 0.2s;
+    animation: fadeUp 0.6s ease forwards 0.2s;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--text-bright);
+    line-height: 1.1;
+    margin-bottom: 20px;
+    opacity: 0;
+    -webkit-animation: fadeUp 0.6s ease forwards 0.4s;
+    animation: fadeUp 0.6s ease forwards 0.4s;
+  }
+
+  .hero h1 span {
+    background: -webkit-linear-gradient(315deg, var(--accent-light), var(--gold));
+    background: linear-gradient(135deg, var(--accent-light), var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .hero-subtitle {
+    font-size: 18px;
+    color: var(--text-dim);
+    max-width: 600px;
+    line-height: 1.7;
+    opacity: 0;
+    -webkit-animation: fadeUp 0.6s ease forwards 0.6s;
+    animation: fadeUp 0.6s ease forwards 0.6s;
+  }
+
+  .hero-meta {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-top: 32px;
+    opacity: 0;
+    -webkit-animation: fadeUp 0.6s ease forwards 0.8s;
+    animation: fadeUp 0.6s ease forwards 0.8s;
+  }
+
+  .meta-item {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    margin-right: 24px;
+    margin-bottom: 12px;
+    font-size: 14px;
+    color: var(--text-dim);
+  }
+
+  .meta-item svg {
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+    margin-right: 8px;
+    color: var(--accent);
+  }
+
+  .meta-item a {
+    color: var(--accent-light);
+    text-decoration: none;
+  }
+
+  /* ===== NAV ===== */
+  .nav {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    background: rgba(13, 21, 32, 0.85);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    z-index: 100;
+    padding: 0 24px;
+  }
+
+  /* Fallback for browsers without backdrop-filter */
+  @supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+    .nav { background: rgba(13, 21, 32, 0.97); }
+  }
+
+  .nav-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: -webkit-flex;
+    display: flex;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .nav-inner::-webkit-scrollbar { display: none; }
+
+  .nav-btn {
+    padding: 14px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--text-dim);
+    background: none;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .nav-btn.active {
+    color: var(--accent-light);
+    border-bottom-color: var(--accent);
+  }
+
+  /* ===== SECTIONS ===== */
+  .section {
+    padding: 56px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-bright);
+    margin-bottom: 8px;
+  }
+
+  .section-desc {
+    font-size: 14px;
+    color: var(--text-dim);
+    margin-bottom: 36px;
+  }
+
+  /* ===== FADE-IN (cross-browser) ===== */
+  .fade-in {
+    opacity: 0;
+    -webkit-transform: translateY(16px);
+    -ms-transform: translateY(16px);
+    transform: translateY(16px);
+    -webkit-transition: opacity 0.5s ease, -webkit-transform 0.5s ease;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+  }
+
+  /* Safety: if JS fails or observer never fires, show content after 4s */
+  @-webkit-keyframes forceFadeIn {
+    to { opacity: 1; -webkit-transform: translateY(0); transform: translateY(0); }
+  }
+  @keyframes forceFadeIn {
+    to { opacity: 1; -webkit-transform: translateY(0); transform: translateY(0); }
+  }
+
+  .fade-in {
+    -webkit-animation: forceFadeIn 0s ease forwards 3s;
+    animation: forceFadeIn 0s ease forwards 3s;
+  }
+  .fade-in.visible {
+    -webkit-animation: none;
+    animation: none;
+  }
+
+  /* ===== STATS ===== */
+  .stats-grid {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin: 0 -8px 40px -8px;
+  }
+
+  .stat-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+    -webkit-flex: 1 1 180px;
+    flex: 1 1 180px;
+    margin: 8px;
+    min-width: 140px;
+  }
+
+  .stat-number {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 36px;
+    font-weight: 800;
+    background: -webkit-linear-gradient(315deg, var(--accent-light), var(--gold));
+    background: linear-gradient(135deg, var(--accent-light), var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .stat-label {
+    font-size: 13px;
+    color: var(--text-dim);
+    margin-top: 4px;
+    font-weight: 500;
+  }
+
+  /* ===== TIMELINE ===== */
+  .timeline { position: relative; }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: -webkit-linear-gradient(top, var(--accent), rgba(59, 130, 246, 0.1));
+    background: linear-gradient(to bottom, var(--accent), rgba(59, 130, 246, 0.1));
+  }
+
+  .timeline-item {
+    position: relative;
+    padding-left: 56px;
+    margin-bottom: 40px;
+  }
+
+  .timeline-dot {
+    position: absolute;
+    left: 12px;
+    top: 6px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--surface);
+    border: 3px solid var(--accent);
+    z-index: 1;
+  }
+
+  .timeline-item:first-child .timeline-dot {
+    background: var(--accent);
+    -webkit-box-shadow: 0 0 12px rgba(59, 130, 246, 0.4);
+    box-shadow: 0 0 12px rgba(59, 130, 246, 0.4);
+  }
+
+  .timeline-date {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--accent-light);
+    margin-bottom: 6px;
+  }
+
+  .timeline-role {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-bright);
+    margin-bottom: 2px;
+  }
+
+  .timeline-company {
+    font-size: 14px;
+    color: var(--text-dim);
+    margin-bottom: 12px;
+  }
+
+  .timeline-highlights {
+    list-style: none;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin: -4px;
+  }
+
+  .timeline-highlights li {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 13px;
+    color: var(--text);
+    margin: 4px;
+  }
+
+  /* ===== SKILLS ===== */
+  .skills-grid {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin: -10px;
+  }
+
+  .skill-group {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    -webkit-flex: 1 1 260px;
+    flex: 1 1 260px;
+    margin: 10px;
+    min-width: 240px;
+  }
+
+  .skill-group-title {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--accent-light);
+    margin-bottom: 16px;
+  }
+
+  .skill-tags {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin: -4px;
+  }
+
+  .skill-tag {
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    background: rgba(59, 130, 246, 0.08);
+    color: var(--text);
+    border: 1px solid rgba(59, 130, 246, 0.1);
+    margin: 4px;
+  }
+
+  /* ===== VALUE PROPS ===== */
+  .value-grid {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin: -10px;
+  }
+
+  .value-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    -webkit-flex: 1 1 260px;
+    flex: 1 1 260px;
+    margin: 10px;
+    min-width: 240px;
+  }
+
+  .value-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    font-size: 22px;
+  }
+
+  .value-card h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-bright);
+    margin-bottom: 8px;
+  }
+
+  .value-card p {
+    font-size: 14px;
+    color: var(--text-dim);
+    line-height: 1.6;
+  }
+
+  /* ===== CTA ===== */
+  .cta-section {
+    padding: 80px 0;
+    text-align: center;
+  }
+
+  .cta-section h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 32px;
+    color: var(--text-bright);
+    margin-bottom: 16px;
+  }
+
+  .cta-section p {
+    color: var(--text-dim);
+    font-size: 16px;
+    margin-bottom: 32px;
+  }
+
+  .cta-buttons {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin: -8px;
+  }
+
+  .cta-btn {
+    padding: 14px 28px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    cursor: pointer;
+    border: none;
+    display: inline-block;
+    margin: 8px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .cta-btn.primary {
+    background: -webkit-linear-gradient(315deg, var(--accent), #2563eb);
+    background: linear-gradient(135deg, var(--accent), #2563eb);
+    color: white;
+    -webkit-box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+  }
+
+  .cta-btn.secondary {
+    background: var(--card);
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+
+  /* ===== ANIMATIONS ===== */
+  @-webkit-keyframes fadeUp {
+    from { opacity: 0; -webkit-transform: translateY(20px); transform: translateY(20px); }
+    to { opacity: 1; -webkit-transform: translateY(0); transform: translateY(0); }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; -webkit-transform: translateY(20px); transform: translateY(20px); }
+    to { opacity: 1; -webkit-transform: translateY(0); transform: translateY(0); }
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 600px) {
+    .hero { padding: 48px 0 40px; }
+    .hero h1 { font-size: 36px; }
+    .section { padding: 40px 0; }
+    .stat-card { -webkit-flex: 1 1 calc(50% - 16px); flex: 1 1 calc(50% - 16px); min-width: 120px; }
+    .nav-btn { padding: 12px 14px; font-size: 12px; }
+    .skill-group, .value-card { -webkit-flex: 1 1 100%; flex: 1 1 100%; }
+  }
+
+  /* Reduced motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      -webkit-animation-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+      -webkit-transition-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+    .fade-in { opacity: 1; -webkit-transform: none; transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <header class="hero">
+    <div class="hero-label">Parking Technology &amp; Implementation Leader</div>
+    <h1>Martin <span>Wiegand</span></h1>
+    <p class="hero-subtitle">20+ years delivering complex parking technology programmes across 340+ sites nationally. Deep expertise in ANPR, PARCS, access control, and full-lifecycle project implementation.</p>
+    <div class="hero-meta">
+      <div class="meta-item">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        Liverpool / Cheshire, UK
+      </div>
+      <div class="meta-item">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        <a id="hero-email" href="#">Loading...</a>
+      </div>
+      <div class="meta-item">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+        07905 905 785
+      </div>
+      <div class="meta-item">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        <a href="https://www.linkedin.com/in/martin-wiegand-68156947/" target="_blank" rel="noopener">LinkedIn Profile</a>
+      </div>
+    </div>
+  </header>
+</div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <button class="nav-btn active" data-section="impact">Impact</button>
+    <button class="nav-btn" data-section="experience">Experience</button>
+    <button class="nav-btn" data-section="skills">Expertise</button>
+    <button class="nav-btn" data-section="value">Why Martin</button>
+    <button class="nav-btn" data-section="contact">Contact</button>
+  </div>
+</nav>
+
+<div class="container">
+
+  <section class="section fade-in" id="impact">
+    <div class="section-title">Career at a Glance</div>
+    <div class="section-desc">Two decades at the UK's largest car park operator, progressing from technical operations to national programme delivery.</div>
+    <div class="stats-grid">
+      <div class="stat-card"><div class="stat-number">20+</div><div class="stat-label">Years in Parking Technology</div></div>
+      <div class="stat-card"><div class="stat-number">340+</div><div class="stat-label">Sites in National Portfolio</div></div>
+      <div class="stat-card"><div class="stat-number">30K+</div><div class="stat-label">Season Tickets Migrated</div></div>
+      <div class="stat-card"><div class="stat-number">300+</div><div class="stat-label">Car Parks Supported</div></div>
+    </div>
+  </section>
+
+  <section class="section fade-in" id="experience">
+    <div class="section-title">Career Timeline</div>
+    <div class="section-desc">A progression built on deep technical knowledge, national-scale delivery, and team leadership.</div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">Sep 2022 &#8212; Mar 2026</div>
+        <div class="timeline-role">Site Implementation Manager</div>
+        <div class="timeline-company">National Car Parks (NCP) &#183; Remote / National</div>
+        <ul class="timeline-highlights">
+          <li>End-to-end project delivery from initiation to BAU handover</li>
+          <li>Multi-project portfolio management across national estate</li>
+          <li>Supplier contract management and risk/reward negotiation</li>
+          <li>Senior stakeholder communication and steering committees</li>
+          <li>Budget, change control, and progress reporting ownership</li>
+          <li>Technology ambassador across the business</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">Aug 2020 &#8212; Sep 2022</div>
+        <div class="timeline-role">Regional Engineering Manager (North)</div>
+        <div class="timeline-company">National Car Parks (NCP) &#183; Remote</div>
+        <ul class="timeline-highlights">
+          <li>Built in-house engineering team from scratch including recruitment</li>
+          <li>Created warehouse facility for spare parts and logistics</li>
+          <li>Implemented asset management system for equipment estate</li>
+          <li>Designed client-facing showroom and training environment</li>
+          <li>FAT/UAT acceptance of new solutions into business</li>
+          <li>Team performance management through 1-1s and reviews</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">May 2018 &#8212; Aug 2020</div>
+        <div class="timeline-role">Parking Equipment Consultant Manager</div>
+        <div class="timeline-company">National Car Parks (NCP) &#183; Remote</div>
+        <ul class="timeline-highlights">
+          <li>Parking equipment lifecycle: specification to commissioning</li>
+          <li>Supplier relationship management and procurement</li>
+          <li>Maintenance planning, repair coordination, root cause analysis</li>
+          <li>Business development support for tenders and bids</li>
+          <li>Talent acquisition and team leadership</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">Dec 2016 &#8212; May 2018</div>
+        <div class="timeline-role">Implementation Technical Team Leader</div>
+        <div class="timeline-company">National Car Parks (NCP) &#183; London</div>
+        <ul class="timeline-highlights">
+          <li>National asset refresh programme &#8212; equipment rollout</li>
+          <li>Network infrastructure implementation pre/post refresh</li>
+          <li>Supplier management: installations, development, troubleshooting</li>
+          <li>Staff training delivery on hardware and software changes</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">Oct 2005 &#8212; Nov 2016</div>
+        <div class="timeline-role">Season Ticket Systems Controller</div>
+        <div class="timeline-company">National Car Parks (NCP) &#183; London</div>
+        <ul class="timeline-highlights">
+          <li>Managed card production for 300+ car parks nationally</li>
+          <li>Led migration of 30,000+ season tickets during upgrade programme</li>
+          <li>Change management for 20,000+ customers</li>
+          <li>Bespoke system administration and change control</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">May 1998 &#8212; Oct 2004</div>
+        <div class="timeline-role">Season Ticket Technical Supervisor</div>
+        <div class="timeline-company">National Car Parks (NCP) &#183; London</div>
+        <ul class="timeline-highlights">
+          <li>14-person department supervision</li>
+          <li>System upgrades and change control management</li>
+          <li>National centralisation of season ticket operations</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section fade-in" id="skills">
+    <div class="section-title">Technical Expertise</div>
+    <div class="section-desc">A rare combination of hands-on technical depth and strategic programme management.</div>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <div class="skill-group-title">Parking Technology</div>
+        <div class="skill-tags">
+          <span class="skill-tag">ANPR Systems</span>
+          <span class="skill-tag">PARCS Equipment</span>
+          <span class="skill-tag">Skidata Systems</span>
+          <span class="skill-tag">Access Control</span>
+          <span class="skill-tag">Payment Solutions</span>
+          <span class="skill-tag">Barrier Systems</span>
+          <span class="skill-tag">Network Infrastructure</span>
+          <span class="skill-tag">Season Ticket Systems</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Project Management</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Full Lifecycle Delivery</span>
+          <span class="skill-tag">Multi-site Programmes</span>
+          <span class="skill-tag">Change Management</span>
+          <span class="skill-tag">Budget Ownership</span>
+          <span class="skill-tag">Stakeholder Management</span>
+          <span class="skill-tag">Risk Management</span>
+          <span class="skill-tag">Agile / Waterfall</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Engineering &amp; Operations</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Solution Architecture</span>
+          <span class="skill-tag">FAT / UAT Testing</span>
+          <span class="skill-tag">Site Surveys</span>
+          <span class="skill-tag">Asset Management</span>
+          <span class="skill-tag">Maintenance Planning</span>
+          <span class="skill-tag">Root Cause Analysis</span>
+          <span class="skill-tag">Team Building</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Software &amp; Systems</div>
+        <div class="skill-tags">
+          <span class="skill-tag">SAP SCM</span>
+          <span class="skill-tag">Microsoft Project</span>
+          <span class="skill-tag">SQL / Oracle</span>
+          <span class="skill-tag">APT Skidata</span>
+          <span class="skill-tag">Microsoft Office Suite</span>
+          <span class="skill-tag">Documentation &amp; SOPs</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section fade-in" id="value">
+    <div class="section-title">Why Martin</div>
+    <div class="section-desc">The differentiators that matter when you're hiring for parking technology leadership.</div>
+    <div class="value-grid">
+      <div class="value-card">
+        <div class="value-icon" style="background: rgba(59, 130, 246, 0.1);">&#127959;</div>
+        <h3>Builds from Zero</h3>
+        <p>Created NCP's in-house engineering function &#8212; recruited the team, established the warehouse, designed the training environment. Not just a manager; a builder.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon" style="background: rgba(245, 158, 11, 0.1);">&#128295;</div>
+        <h3>Hands-On + Strategic</h3>
+        <p>Equally comfortable configuring equipment software as presenting to steering committees. Bridges the gap between the car park floor and the boardroom.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon" style="background: rgba(34, 197, 94, 0.1);">&#128225;</div>
+        <h3>Full Technology Stack</h3>
+        <p>ANPR, PARCS, payment systems, network infrastructure, access control, asset management &#8212; end-to-end parking technology expertise in one person.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon" style="background: rgba(168, 85, 247, 0.1);">&#127919;</div>
+        <h3>National Scale Delivery</h3>
+        <p>Has managed technology change across 340+ sites simultaneously. Understands the complexity of rolling out at scale while maintaining quality and budget discipline.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon" style="background: rgba(239, 68, 68, 0.1);">&#129309;</div>
+        <h3>Supplier Ecosystem</h3>
+        <p>20+ years of relationships with parking equipment suppliers, installers, and technology partners. Knows who delivers and who doesn't.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon" style="background: rgba(6, 182, 212, 0.1);">&#128200;</div>
+        <h3>Commercially Aware</h3>
+        <p>Budget ownership, contract negotiation, tender support, and business development consultation. Understands the commercial context behind every technical decision.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section fade-in" id="contact">
+    <h2>Let's Talk</h2>
+    <p>Available for senior roles in parking technology, implementation, and operations leadership.<br>Open to Liverpool-based, remote, hybrid, and travel roles across the UK.</p>
+    <div class="cta-buttons">
+      <a id="cta-email" href="#" class="cta-btn primary">Email Martin</a>
+      <a href="tel:+447905905785" class="cta-btn secondary">Call: 07905 905 785</a>
+      <a href="https://www.linkedin.com/in/martin-wiegand-68156947/" target="_blank" rel="noopener" class="cta-btn secondary">LinkedIn</a>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  // === Email (CloudFlare-proof) ===
+  (function() {
+    var p = ['Martin.Wiegand', 'live.co.uk'];
+    var a = p[0] + String.fromCharCode(64) + p[1];
+    var m = String.fromCharCode(109,97,105,108,116,111,58);
+    var h = document.getElementById('hero-email');
+    if (h) { h.href = m + a; h.textContent = a; }
+    var c = document.getElementById('cta-email');
+    if (c) { c.href = m + a; }
+  })();
+
+  // === Fade-in with triple fallback ===
+  (function() {
+    var els = document.querySelectorAll('.fade-in');
+    var revealed = {};
+
+    function reveal(el, i) {
+      if (revealed[i]) return;
+      revealed[i] = true;
+      el.classList.add('visible');
+    }
+
+    // Method 1: IntersectionObserver (Chrome, modern Safari, Firefox)
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function(entries) {
+        for (var j = 0; j < entries.length; j++) {
+          if (entries[j].isIntersecting) {
+            var idx = Array.prototype.indexOf.call(els, entries[j].target);
+            reveal(entries[j].target, idx);
+          }
+        }
+      }, { threshold: 0.05, rootMargin: '0px 0px 50px 0px' });
+
+      for (var i = 0; i < els.length; i++) { io.observe(els[i]); }
+    }
+
+    // Method 2: Scroll listener fallback (older Safari, IE)
+    function checkScroll() {
+      var wh = window.innerHeight || document.documentElement.clientHeight;
+      for (var i = 0; i < els.length; i++) {
+        var rect = els[i].getBoundingClientRect();
+        if (rect.top < wh + 50 && rect.bottom > 0) {
+          reveal(els[i], i);
+        }
+      }
+    }
+    window.addEventListener('scroll', checkScroll, false);
+    window.addEventListener('resize', checkScroll, false);
+    window.addEventListener('orientationchange', checkScroll, false);
+
+    // Run on load and after short delay (catches iOS Safari initial render)
+    checkScroll();
+    setTimeout(checkScroll, 100);
+    setTimeout(checkScroll, 500);
+    setTimeout(checkScroll, 1500);
+
+    // Method 3: Nuclear fallback - force everything visible after 4s
+    setTimeout(function() {
+      for (var i = 0; i < els.length; i++) { reveal(els[i], i); }
+    }, 4000);
+  })();
+
+  // === Nav with cross-browser smooth scroll ===
+  (function() {
+    var btns = document.querySelectorAll('.nav-btn');
+
+    function smoothScrollTo(el) {
+      var target = el.getBoundingClientRect().top + window.pageYOffset - 60;
+      // Try native smooth scroll first
+      try {
+        window.scrollTo({ top: target, behavior: 'smooth' });
+      } catch(e) {
+        // Fallback for older Safari: manual animation
+        var start = window.pageYOffset;
+        var diff = target - start;
+        var duration = 400;
+        var startTime = null;
+        function step(ts) {
+          if (!startTime) startTime = ts;
+          var progress = Math.min((ts - startTime) / duration, 1);
+          var ease = progress < 0.5
+            ? 2 * progress * progress
+            : -1 + (4 - 2 * progress) * progress;
+          window.scrollTo(0, start + diff * ease);
+          if (progress < 1) window.requestAnimationFrame(step);
+        }
+        window.requestAnimationFrame(step);
+      }
+    }
+
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].addEventListener('click', function() {
+        for (var j = 0; j < btns.length; j++) btns[j].classList.remove('active');
+        this.classList.add('active');
+        var s = document.getElementById(this.getAttribute('data-section'));
+        if (s) smoothScrollTo(s);
+      }, false);
+    }
+
+    // Update nav on scroll
+    var secs = document.querySelectorAll('.section, .cta-section');
+    window.addEventListener('scroll', function() {
+      var cur = '';
+      for (var i = 0; i < secs.length; i++) {
+        if (window.pageYOffset >= secs[i].offsetTop - 100) cur = secs[i].id;
+      }
+      for (var j = 0; j < btns.length; j++) {
+        if (btns[j].getAttribute('data-section') === cur) {
+          btns[j].classList.add('active');
+        } else {
+          btns[j].classList.remove('active');
+        }
+      }
+    }, false);
+  })();
+</script>
+
+</body>
+</html>
